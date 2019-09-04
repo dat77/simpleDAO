@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Real estate</title>
+</head>
+<body>
+<form id="addflat" name="addflat" action="/addflat" method="post">
+<table>
+<tr>
+<td>district</td>
+<td>street</td>
+<td>space</td>
+<td>roomsnumber</td>
+<td>price</td>
+<td>phoneNumber</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><input name="district" type="text" /></td>
+<td><input name="street" type="text" /></td>
+<td><input name="space" type="text" /></td>
+<td><input name="roomsnumber" type="text" /></td>
+<td><input name="price" type="text" /></td>
+<td><input name="phoneNumber" type="text" /></td>
+<td><input name="addflat" type="submit" value="Add flat" /></td>
+</tr>
+</table>
+</form>
+<form id="showform" name="showform" method="post" action="/showall">
+  <table width="675" >
+    <tr >
+      <td width="100"><label>district
+        <input type="checkbox" name="Fields" value="checkbox" id="district" />
+        </label></td>
+      <td width="100"><label>street
+        <input type="checkbox" name="Fields" value="checkbox" id="street" />
+        </label></td>
+      <td width="100"><label>space
+        <input type="checkbox" name="Fields" value="checkbox" id="space" />
+        </label></td>
+      <td width="100"><label>roomsnumber
+        <input type="checkbox" name="Fields" value="checkbox" id="roomsnumber" />
+        </label></td>
+      <td width="100"><label>price
+        <input type="checkbox" name="Fields" value="checkbox" id="price" />
+        </label></td>
+      <td width="100"><label>phone Number
+        <input type="checkbox" name="Fields" value="checkbox" id="phoneNumber" />
+        </label></td>
+        <td width="75"><input name="showall" type="submit" value="Show all" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
