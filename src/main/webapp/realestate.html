@@ -1,56 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Real estate</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Real estate</title>
 </head>
 <body>
 <form id="addflat" name="addflat" action="/addflat" method="post">
-<table>
-<tr>
-<td>district</td>
-<td>street</td>
-<td>space</td>
-<td>roomsnumber</td>
-<td>price</td>
-<td>phoneNumber</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td><input name="district" type="text" /></td>
-<td><input name="street" type="text" /></td>
-<td><input name="space" type="text" /></td>
-<td><input name="roomsnumber" type="text" /></td>
-<td><input name="price" type="text" /></td>
-<td><input name="phoneNumber" type="text" /></td>
-<td><input name="addflat" type="submit" value="Add flat" /></td>
-</tr>
-</table>
+    <table>
+        <tr>
+            <td>district</td>
+            <td>street</td>
+            <td>space</td>
+            <td>rooms number</td>
+            <td>price</td>
+            <td>phone number</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><input name="district" type="text"/></td>
+            <td><input name="street" type="text"/></td>
+            <td><input name="space" type="text"/></td>
+            <td><input name="roomsNumber" type="text"/></td>
+            <td><input name="price" type="text"/></td>
+            <td><input name="phoneNumber" type="text"/></td>
+            <td><input name="addflat" type="submit" value="Add flat"/></td>
+        </tr>
+    </table>
 </form>
 <form id="showform" name="showform" method="post" action="/showall">
-  <table width="445" >
-    <tr >
-      <td width="44"><label>district
-        <input type="checkbox" name="Fields" value="checkbox" id="district" />
-        </label></td>
-      <td width="37"><label>street
-        <input type="checkbox" name="Fields" value="checkbox" id="street" />
-        </label></td>
-      <td width="39"><label>space
-        <input type="checkbox" name="Fields" value="checkbox" id="space" />
-        </label></td>
-      <td width="87"><label>roomsnumber
-        <input type="checkbox" name="Fields" value="checkbox" id="roomsnumber" />
-        </label></td>
-      <td width="34"><label>price
-        <input type="checkbox" name="Fields" value="checkbox" id="price" />
-        </label></td>
-      <td width="97"><label>phone Number
-        <input type="checkbox" name="Fields" value="checkbox" id="phoneNumber" />
-        </label></td>
-        <td width="75"><input name="showall" type="submit" value="Show all" /></td>
-    </tr>
-  </table>
+    <table>
+        <tr align="center">
+            <td>district</td>
+            <td>street</td>
+            <td>space</td>
+            <td>rooms number</td>
+            <td>price</td>
+            <td>phone number</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox" name="Fields" value="district" id="district"/></td>
+            <td><input type="checkbox" name="Fields" value="street" id="street"/></td>
+            <td><input type="checkbox" name="Fields" value="space" id="space"/></td>
+            <td><input type="checkbox" name="Fields" value="roomsNumber" id="roomsNumber"/></td>
+            <td><input type="checkbox" name="Fields" value="price" id="price"/></td>
+            <td><input type="checkbox" name="Fields" value="phoneNumber" id="phoneNumber"/></td>
+            <td><input name="showall" type="submit" value="Show selected"/></td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

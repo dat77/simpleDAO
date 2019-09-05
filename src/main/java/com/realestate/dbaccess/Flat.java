@@ -1,5 +1,7 @@
 package com.realestate.dbaccess;
 
+import com.realestate.dbabstract.Id;
+
 public class Flat {
     @Id
     private int id;

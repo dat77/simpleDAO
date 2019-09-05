@@ -5,7 +5,7 @@ create table Flat (
   district varchar(128) not null,
   street varchar(128) not null,
   space double not null,
-  roomsnumber int not null,
+  roomsNumber int not null,
   price double not null,
   phoneNumber varchar(32)
 );
