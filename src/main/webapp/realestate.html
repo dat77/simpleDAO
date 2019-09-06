@@ -6,7 +6,9 @@
     <title>Real estate</title>
 </head>
 <body>
+
 <form id="addflat" name="addflat" action="/addflat" method="post">
+    <h2>New Flat</h2>
     <table>
         <tr>
             <td>district</td>
@@ -27,16 +29,19 @@
             <td><input name="addflat" type="submit" value="Add flat"/></td>
         </tr>
     </table>
+    <h2>&nbsp;</h2>
 </form>
+
 <form id="showform" name="showform" method="post" action="/showall">
+    <h2>Select the fields to show</h2>
     <table>
         <tr align="center">
-            <td>district</td>
-            <td>street</td>
-            <td>space</td>
-            <td>rooms number</td>
-            <td>price</td>
-            <td>phone number</td>
+            <td> district </td>
+            <td> street </td>
+            <td> space </td>
+            <td> rooms number </td>
+            <td> price </td>
+            <td> phone number </td>
             <td>&nbsp;</td>
         </tr>
         <tr align="center">
@@ -49,6 +54,37 @@
             <td><input name="showall" type="submit" value="Show selected"/></td>
         </tr>
     </table>
+    <h2>&nbsp;</h2>
 </form>
+
+<form id="filterform" name="filterform" method="post" action="/filterall">
+    <h2>Define the fields values to be filtered</h2>
+    <table>
+        <tr align="center">
+            <td> district </td>
+            <td> street </td>
+            <td> space </td>
+            <td> rooms number </td>
+            <td> price </td>
+            <td> phone number </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+            <td><input type="text" name="district"/></td>
+            <td><input type="text" name="street"/></td>
+            <td>from: <input type="text" name="space" width="32" value="0"/></td>
+            <td><select name="roomsNumber" size="1">
+            <option value=" = 1">1</option>
+            <option value=" = 2">2</option>
+            <option value=" = 3">3</option>
+            <option value=" > 3">more</option>
+            </select></td>
+            <td>from: <input type="text" name="price" width="64" value="0"/></td>
+            <td><input type="checkbox" name="phoneNumber" value="phoneNumber"/></td>
+            <td><input name="filterall" type="submit" value="Show filtered"/></td>
+        </tr>
+    </table>
+</form>
+
 </body>
 </html>

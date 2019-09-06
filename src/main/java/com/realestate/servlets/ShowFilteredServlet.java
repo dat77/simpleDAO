@@ -1,6 +1,5 @@
 package com.realestate.servlets;
 
-
 import com.realestate.dbabstract.AbstractHandler;
 import com.realestate.dbaccess.Flat;
 import com.realestate.dbaccess.FlatDAOMySQL;
@@ -15,10 +14,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "Showall", urlPatterns = {"/showall"})
-public class ShowAllServlet extends HttpServlet {
+@WebServlet(name = "Filterall", urlPatterns = {"/filterall"})
+public class ShowFilteredServlet extends HttpServlet {
 
-    private  AbstractHandler handlerMySQL;
+    private AbstractHandler handlerMySQL;
 
     @Override
     public void init() throws ServletException {
@@ -34,12 +33,17 @@ public class ShowAllServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        String[] fields = req.getParameterValues("Fields");
+        String district = "district LIKE '%"+req.getParameter("district")+"%'";
+        String street = "street LIKE '%"+req.getParameter("street")+"%'";
+        String space = "space >= "+req.getParameter("space");
+        String roomsNumber = "roomsNumber"+req.getParameter("roomsNumber");
+        String price = "price >= "+req.getParameter("price");
+        String[] phoneNumbers = req.getParameterValues("phoneNumber");
+        String phoneNumber = (phoneNumbers != null && phoneNumbers.length > 0) ? "phoneNumber IS NOT NULL" : "phoneNumber LIKE '%%'";
 
         List<Object[]> flats = null;
         try {
-            flats = handlerMySQL.selectAll(Flat.class, fields);
+            flats = handlerMySQL.selectFiltered(Flat.class, district, street, space, roomsNumber, price, phoneNumber);
         } catch (SQLException | NoSuchFieldException e) {
             e.printStackTrace();
         }
@@ -47,5 +51,6 @@ public class ShowAllServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/flatslist.jsp");
         dispatcher.forward(req, resp);
     }
+
 
 }

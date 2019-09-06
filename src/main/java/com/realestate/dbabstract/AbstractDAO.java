@@ -78,19 +78,18 @@ public class AbstractDAO<T> implements AbstractHandler<T> {
     public List<Object[]> selectAll(Class<T> cls, String... fields) throws SQLException, NoSuchFieldException {
         List<Object[]> res = new ArrayList<>();
             try (Statement st = conn.createStatement()) {
-                StringBuilder fielsNames = new StringBuilder();
+                StringBuilder fieldsNames = new StringBuilder();
 
                 for (int i = 0; i < fields.length; i++) {
                     if (cls.getDeclaredField(fields[i])==null) {
                         throw new IllegalArgumentException("Wrong field name");
                     }
-                    fielsNames.append(fields[i]).append(",");
+                    fieldsNames.append(fields[i]).append(",");
                 }
-                fielsNames.deleteCharAt(fielsNames.length() - 1); // last ','
-                try (ResultSet rs = st.executeQuery("SELECT " +fielsNames+" FROM " + table)) {
+                fieldsNames.deleteCharAt(fieldsNames.length() - 1); // last ','
+                try (ResultSet rs = st.executeQuery("SELECT " +fieldsNames+" FROM " + table)) {
                     ResultSetMetaData md = rs.getMetaData();
-                    Object[] row = new Object[md.getColumnCount()];
-                    row=fields;
+                    Object[] row = fields;
                     res.add(row);
                     while (rs.next()) {
                         row = new Object[md.getColumnCount()];
@@ -105,5 +104,34 @@ public class AbstractDAO<T> implements AbstractHandler<T> {
             return res;
     }
 
+    @Override
+    public List<Object[]> selectFiltered(Class<T> cls, String... conditions) throws SQLException, NoSuchFieldException {
+        List<Object[]> res = new ArrayList<>();
+        try (Statement st = conn.createStatement()) {
+            StringBuilder where = new StringBuilder();
 
+            for (int i = 0; i < conditions.length-1; i++) {
+                where.append(conditions[i]).append(" AND ");
+            }
+            where.append(conditions[conditions.length - 1]); // last
+            try (ResultSet rs = st.executeQuery("SELECT * FROM " + table + " WHERE " + where)) {
+                ResultSetMetaData md = rs.getMetaData();
+                Object[] row = new Object[md.getColumnCount()];
+                for (int i = 1; i <= md.getColumnCount(); i++) {
+                    row[i - 1] = md.getColumnName(i);
+                }
+                res.add(row);
+                while (rs.next()) {
+                    row = new Object[md.getColumnCount()];
+                    for (int i = 1; i <= md.getColumnCount(); i++) {
+                        String columnName = md.getColumnName(i);
+                        row[i-1]=rs.getString(columnName);
+                    }
+                    res.add(row);
+                }
+            }
+        }
+        return res;
+
+    }
 }
